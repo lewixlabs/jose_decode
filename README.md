@@ -1,4 +1,4 @@
-# JWE Decrypt + JWS Verify (End-to-End)
+# JWE Decrypt + JWS Verify
 
 This repository contains a single Python script that performs an end-to-end JOSE pipeline:
 
