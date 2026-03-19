@@ -1,29 +1,26 @@
 #!/usr/bin/env python3
 """
-JWE (decrypt) + JWS (verify) end-to-end in un unico script.
+JWE (decrypt) + JWS (verify) end-to-end in a single script.
 
-Scenario tipico (il tuo):
-- Ricevi un JWE "compact" (5 segmenti) cifrato per TE:
-    alg = RSA-OAEP-256   -> la CEK è cifrata con la tua *chiave pubblica*
-    enc = A256GCM        -> il contenuto è cifrato con AES-256-GCM usando la CEK
-- Dopo la decifratura, il plaintext contiene un JWS/JWT "compact" (3 segmenti)
-  firmato dal MITTENTE:
+Typical scenario (yours):
+- You receive a JWE in "compact" serialization (5 dot-separated segments) encrypted FOR YOU:
+    alg = RSA-OAEP-256   -> the CEK is encrypted with your *public key*
+    enc = A256GCM        -> the content is encrypted with AES-256-GCM using the CEK
+- After decryption, the plaintext contains a JWS/JWT in "compact" serialization (3 dot-separated segments)
+  signed by the SENDER:
     alg = RS256 -> RSA PKCS#1 v1.5 + SHA-256
 
-Quindi il flusso è:  JWS (sign) -> JWE (encrypt)
-Tu fai il contrario: JWE (decrypt) -> JWS (verify)
-
-Dipendenze:
+Dependencies:
   pip install jwcrypto cryptography
 
-Uso:
+Usage:
   python jwe_decrypt_and_jws_verify.py private_key_pkcs8.pem jwe.txt sender_cert_or_pubkey.pem
 
-File richiesti:
-- private_key_pkcs8.pem: chiave privata RSA in formato PKCS#8 PEM (-----BEGIN PRIVATE KEY-----)
-- jwe.txt: JWE compact (5 segmenti separati da '.')
-- sender_cert_or_pubkey.pem: certificato X.509 PEM (-----BEGIN CERTIFICATE-----)
-  oppure chiave pubblica PEM (-----BEGIN PUBLIC KEY-----) del mittente per verificare RS256.
+Required files:
+- private_key_pkcs8.pem: RSA private key in PKCS#8 PEM format (-----BEGIN PRIVATE KEY-----)
+- jwe.txt: JWE compact token (5 dot-separated segments)
+- sender_cert_or_pubkey.pem: sender X.509 certificate in PEM format (-----BEGIN CERTIFICATE-----)
+  or sender public key in PEM format (-----BEGIN PUBLIC KEY-----) used to verify RS256.
 """
 
 from __future__ import annotations
