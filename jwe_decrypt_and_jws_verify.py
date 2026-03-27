@@ -2,7 +2,7 @@
 """
 JWE (decrypt) + JWS (verify) end-to-end in a single script.
 
-Typical scenario (yours):
+Typical scenario:
 - You receive a JWE in "compact" serialization (5 dot-separated segments) encrypted FOR YOU:
     alg = RSA-OAEP-256   -> the CEK is encrypted with your *public key*
     enc = A256GCM        -> the content is encrypted with AES-256-GCM using the CEK

@@ -92,3 +92,47 @@ This key/certificate is used to verify the RS256 signature of the JWS found insi
 ## Script
 
 See: `jwe_decrypt_and_jws_verify.py`
+
+---
+
+## Web Interface
+
+A browser-based UI is provided as an alternative to the command-line script.  
+It exposes the same JWE decrypt → JWS verify pipeline through a local Flask web server.
+
+### Additional requirement
+
+```bash
+pip install flask
+```
+
+### Start the server
+
+```bash
+python app.py
+```
+
+Then open **http://127.0.0.1:5000** in your browser.
+
+### How it works
+
+The page (`index.html`) offers three inputs:
+
+| Input | Description |
+|---|---|
+| **Private Key** | Upload the recipient RSA private key (PKCS#8 PEM — `.pem`, `.p8`, `.key`) |
+| **Public Key / Certificate** | Upload the sender's public key or X.509 certificate (PEM — `.pem`, `.crt`, `.cer`) |
+| **JWE Payload** | Paste the JWE compact token (5 dot-separated segments) directly into the text box |
+
+Click **Decrypt & Verify** to run the pipeline. The result section shows:
+
+- Status badges confirming **JWE Decryption: OK** and **JWS Verification: OK** (or an error badge with the full error detail).
+- The verified **plaintext payload** (pretty-printed JSON when applicable).
+- Collapsible sections for the **JWE Protected Header** and the **JWS Header**.
+
+### Files
+
+| File | Role |
+|---|---|
+| `app.py` | Flask backend — exposes `GET /` (page) and `POST /api/decrypt` (crypto pipeline) |
+| `index.html` | Single-page frontend — file inputs + textarea + result rendering |
