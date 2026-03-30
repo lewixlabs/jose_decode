@@ -1,2 +1,5 @@
 *.pem
 *.txt
+build
+dist
+*.exe
