@@ -1,5 +1,9 @@
 # JWE Decrypt + JWS Verify
 
+## Premessa
+
+This project was built using a vibe coding mindset as experiment: fast iterations and continuous improvements. 🤖✨
+
 This repository contains a single Python script that performs an end-to-end JOSE pipeline:
 
 1. **Decrypt a JWE (compact serialization)** using the recipient’s **RSA private key**.
