@@ -1,6 +1,6 @@
 # JWE Decrypt + JWS Verify
 
-## Premessa
+## Assumption
 
 This project was built using a vibe coding mindset as experiment: fast iterations and continuous improvements. 🤖✨
 
