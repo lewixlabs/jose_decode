@@ -136,3 +136,63 @@ Click **Decrypt & Verify** to run the pipeline. The result section shows:
 |---|---|
 | `app.py` | Flask backend — exposes `GET /` (page) and `POST /api/decrypt` (crypto pipeline) |
 | `index.html` | Single-page frontend — file inputs + textarea + result rendering |
+
+---
+
+## Web App (No Backend, Vite + TypeScript)
+
+A fully client-side version is available in `web/`.
+
+- No backend required.
+- Uses the `jose` JavaScript library in the browser.
+- Works offline once dependencies are installed and the app is built.
+
+### Setup
+
+```bash
+cd web
+npm install
+```
+
+### Development (Vite)
+
+```bash
+npm run dev
+```
+
+### Production build
+
+```bash
+npm run build
+npm run preview
+```
+
+The built static files are generated in `web/dist/`.
+
+### Important: do not open `dist/index.html` with `file://`
+
+Modern browsers block ES module loading from `file://` for security/CORS reasons, so opening `web/dist/index.html` directly can fail with a CORS error.
+
+Use a local static server instead (still no backend logic):
+
+```bash
+cd web
+npm run serve:dist
+```
+
+Then open: `http://127.0.0.1:4173`
+
+### Optional: standalone single-file build (double click)
+
+If you need an HTML file that can be opened directly from disk, generate the standalone bundle:
+
+```bash
+cd web
+npm run build:standalone
+```
+
+Output file:
+
+- `web/dist-standalone/index.html`
+
+This variant inlines JS and CSS into one file (no external module files).

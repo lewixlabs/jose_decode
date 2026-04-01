@@ -2,4 +2,6 @@
 *.txt
 build
 dist
+dist-standalone
 *.exe
+node_modules
