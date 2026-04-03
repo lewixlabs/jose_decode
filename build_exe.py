@@ -17,14 +17,14 @@ def run_command(cmd, description):
     
     try:
         result = subprocess.run(cmd, check=True, shell=True)
-        print(f"\n✓ {description} completato!")
+        print(f"\n✓ {description} completed!")
         return True
     except subprocess.CalledProcessError as e:
-        print(f"\n✗ Errore durante {description.lower()}")
-        print(f"Codice errore: {e.returncode}")
+        print(f"\n✗ Error during {description.lower()}")
+        print(f"Error code: {e.returncode}")
         return False
     except Exception as e:
-        print(f"\n✗ Errore: {e}")
+        print(f"\n✗ Error: {e}")
         return False
 
 def main():

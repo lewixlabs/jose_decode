@@ -39,7 +39,75 @@ h1 {
 .subtitle {
   font-size: 0.875rem;
   color: var(--muted-2);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.9rem;
+}
+
+.mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.toggle-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mode-text {
+  font-size: 0.85rem;
+  color: #bfdbfe;
+  font-weight: 600;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #334155;
+  border: 1px solid #475569;
+  transition: 0.2s;
+  border-radius: 999px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #e2e8f0;
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: #0f766e;
+  border-color: #14b8a6;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
 }
 
 .subtitle-2 {
@@ -232,6 +300,12 @@ textarea::placeholder {
   background: #450a0a;
   color: #fca5a5;
   border: 1px solid #7f1d1d;
+}
+
+.badge-info {
+  background: #0c2c4f;
+  color: #93c5fd;
+  border: 1px solid #1d4ed8;
 }
 
 .section {
