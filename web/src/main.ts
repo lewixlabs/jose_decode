@@ -13,7 +13,7 @@ import {
 const app = document.querySelector<HTMLDivElement>("#app");
 
 if (!app) {
-  throw new Error("Container #app non trovato.");
+  throw new Error("Container #app not found.");
 }
 
 app.innerHTML = `
@@ -273,12 +273,12 @@ async function decryptAndVerify(): Promise<void> {
   const jweToken = jwePayload.value.trim();
 
   if (!privateFile || !publicFile) {
-    window.alert("Carica prima private key e public key/certificate.");
+    window.alert("Please load the private key and public key/certificate first.");
     return;
   }
 
   if (!jweToken) {
-    window.alert("Incolla prima il token JWE.");
+    window.alert("Please paste the JWE token first.");
     return;
   }
 
@@ -307,7 +307,8 @@ async function decryptAndVerify(): Promise<void> {
       resultBody.appendChild(
         makeSection(
           "Error detail",
-          `Il plaintext decrittato non e un JWS compact valido: attesi 3 segmenti, trovati ${jwsParts.length}.\n\nPreview:\n${jwsToken.slice(0, 200)}`,
+          `The decrypted plaintext is not a valid compact JWS: expected 3 segments, found ${jwsParts.length}.\n\nPreview:\n${jwsToken.slice(0, 200)}`,
+
           "error"
         )
       );
@@ -369,12 +370,12 @@ async function signAndEncrypt(): Promise<void> {
   const payloadInput = jwePayload.value;
 
   if (!privateFile || !publicFile) {
-    window.alert("Carica prima private key per firmare e public key/certificate per cifrare.");
+    window.alert("Please load the private key for signing and the public key/certificate for encryption first.");
     return;
   }
 
   if (!payloadInput.trim()) {
-    window.alert("Incolla prima il payload da firmare e cifrare.");
+    window.alert("Please paste the payload to sign and encrypt first.");
     return;
   }
 
