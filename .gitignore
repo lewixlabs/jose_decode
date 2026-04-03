@@ -1,4 +1,5 @@
 *.pem
+*.cer
 *.txt
 build
 dist
